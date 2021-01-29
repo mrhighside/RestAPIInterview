@@ -2,6 +2,7 @@ package com.interview.api.model;
 
 import java.sql.Timestamp;
 
+//HealthResponse object to hold data to be returned by APIs
 public class HealthResponse {
     private String url;
     private int statusCode;

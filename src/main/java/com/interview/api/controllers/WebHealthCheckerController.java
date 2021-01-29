@@ -9,22 +9,26 @@ import com.interview.api.model.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//Controller that handles the API calls
 @RestController
 @RequestMapping("v1")
 public class WebHealthCheckerController {
 
+    //Check Google
     @RequestMapping ("/google-status")
     public HealthResponse GoogleHealthCheck()
     {
         return WebHealthCheckerService.urlHealthCheck("https://www.google.com");
     }
 
+    //Check Amazon
     @RequestMapping ("/amazon-status")
     public HealthResponse AmazonHealthCheck()
     {
         return WebHealthCheckerService.urlHealthCheck("https://www.amazon.com");
     }
 
+    //Check both Google and Amazon
     @RequestMapping ("/all-status")
     public List<HealthResponse> AllHealthCheck()
     {

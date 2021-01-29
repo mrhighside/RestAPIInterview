@@ -12,11 +12,14 @@ public class WebHealthCheckerService
     {
         try
         {
+            //Fetch the URL and get the timing
             Long start = System.nanoTime();
             Connection.Response webResponse = Jsoup.connect(url).execute();
             Long end = System.nanoTime();
 
             Long duration = end - start;
+
+            //create response object and populate
             HealthResponse response = new HealthResponse();
             response.setDate(new Timestamp(System.currentTimeMillis()));
             response.setDuration(duration);
