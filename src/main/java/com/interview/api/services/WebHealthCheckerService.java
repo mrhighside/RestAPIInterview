@@ -5,9 +5,13 @@ import com.interview.api.model.HealthResponse;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 
-public class WebHealthCheckerService {
-    public static HealthResponse urlHealthCheck(String url){
-        try{
+public class WebHealthCheckerService 
+{
+    //Do the heath check of the pased in URL
+    public static HealthResponse urlHealthCheck(String url)
+    {
+        try
+        {
             Long start = System.nanoTime();
             Connection.Response webResponse = Jsoup.connect(url).execute();
             Long end = System.nanoTime();
@@ -22,7 +26,11 @@ public class WebHealthCheckerService {
             return response;
         }catch(Exception e){
             //need better error handling
-            return null;
+            HealthResponse errorResponse = new HealthResponse();
+            errorResponse.setDate(new Timestamp(System.currentTimeMillis()));
+            errorResponse.setStatusCode(418);
+            errorResponse.setUrl(url + " - Error: " + e.toString() );
+            return errorResponse;
         }
     }
 }
