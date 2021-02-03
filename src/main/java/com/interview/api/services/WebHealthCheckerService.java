@@ -13,9 +13,9 @@ public class WebHealthCheckerService
         try
         {
             //Fetch the URL and get the timing
-            Long start = System.nanoTime();
+            Long start = System.currentTimeMillis();
             Connection.Response webResponse = Jsoup.connect(url).execute();
-            Long end = System.nanoTime();
+            Long end = System.currentTimeMillis();
 
             Long duration = end - start;
 
